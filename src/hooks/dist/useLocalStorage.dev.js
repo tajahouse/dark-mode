@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.useLocalStorage = void 0;
 
+var _react = require("react");
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -14,13 +16,20 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useLocalStorage = function useLocalStorage(key, initialValue) {
-  var _useState = useState(function () {
+  var _useState = (0, _react.useState)(function () {
     var item = window.localStorage.getItem(key);
     return item ? JSON.parse(item) : initialValue;
+
+    var setValue = function setValue(value) {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    };
   }),
       _useState2 = _slicedToArray(_useState, 2),
       storedValue = _useState2[0],
       setStoredValue = _useState2[1];
+
+  return [storedValue];
 };
 
 exports.useLocalStorage = useLocalStorage;

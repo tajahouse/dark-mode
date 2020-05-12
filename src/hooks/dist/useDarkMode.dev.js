@@ -7,6 +7,8 @@ exports.useDarkMode = void 0;
 
 var _react = require("react");
 
+var _useLocalStorage3 = require("../hooks/useLocalStorage");
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -16,10 +18,10 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useDarkMode = function useDarkMode() {
-  var _useLocalStorage = useLocalStorage(darkMode),
+  var _useLocalStorage = (0, _useLocalStorage3.useLocalStorage)(darkMode),
       _useLocalStorage2 = _slicedToArray(_useLocalStorage, 2),
-      someValue = _useLocalStorage2[0],
-      setSomeValue = _useLocalStorage2[1];
+      storedValue = _useLocalStorage2[0],
+      setStoredValue = _useLocalStorage2[1];
 };
 
 exports.useDarkMode = useDarkMode;
