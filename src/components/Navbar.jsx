@@ -3,11 +3,7 @@ import { useDarkMode } from '../hooks/useDarkMode';
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useDarkMode(false);
-  const toggleMode = e => {
-    e.preventDefault();
-    setDarkMode(!darkMode);
-  };
+const [darkMode, toggleMode] = useDarkMode(false)
   return (
     <nav className="navbar">
       <h1>Crypto Tracker</h1>

@@ -7,7 +7,7 @@ exports.useDarkMode = void 0;
 
 var _react = require("react");
 
-var _useLocalStorage3 = require("../hooks/useLocalStorage");
+var _useLocalStorage = require("../hooks/useLocalStorage");
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -18,10 +18,22 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useDarkMode = function useDarkMode() {
-  var _useLocalStorage = (0, _useLocalStorage3.useLocalStorage)(darkMode),
-      _useLocalStorage2 = _slicedToArray(_useLocalStorage, 2),
-      storedValue = _useLocalStorage2[0],
-      setStoredValue = _useLocalStorage2[1];
+  //const [someValue, setSomeValue] = useLocalStorage(darkMode)
+  var _useState = (0, _react.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      darkMode = _useState2[0],
+      setDarkMode = _useState2[1];
+
+  (0, _react.useEffect)(function () {
+    darkMode ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
+  }, [darkMode]);
+
+  var toggleMode = function toggleMode(e) {
+    e.preventDefault();
+    setDarkMode(!darkMode);
+  };
+
+  return [darkMode, toggleMode];
 };
 
 exports.useDarkMode = useDarkMode;
