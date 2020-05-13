@@ -19,17 +19,17 @@ var useLocalStorage = function useLocalStorage(key, initialValue) {
   var _useState = (0, _react.useState)(function () {
     var item = window.localStorage.getItem(key);
     return item ? JSON.parse(item) : initialValue;
-
-    var setValue = function setValue(value) {
-      setStoredValue(value);
-      window.localStorage.setItem(key, JSON.stringify(value));
-    };
   }),
       _useState2 = _slicedToArray(_useState, 2),
       storedValue = _useState2[0],
       setStoredValue = _useState2[1];
 
-  return [storedValue];
+  var setValue = function setValue(value) {
+    setStoredValue(value);
+    window.localStorage.setItem(key, JSON.stringify(value));
+  };
+
+  return [storedValue, setValue];
 };
 
 exports.useLocalStorage = useLocalStorage;
